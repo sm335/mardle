@@ -2,4 +2,4 @@
 
 Here's a screenshot:
 
-<img src="readme.jpg" alt="Screenshot"/>
+<img src="example1.png" alt="Screenshot"/>

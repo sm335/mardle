@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --theme: rgb(254 222 50);
+    --theme-hover: rgb(254 250 94);
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+    background-color: #000;
+    position: relative;
+    height: 100vh;
+}
+
+.background-image {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+    opacity: .3;
+}
+
+.search-container {
+    flex-shrink: 0;
+    --search-theme: var(--theme);
+    padding: .75rem 1.75rem;
+    background-color: var(--search-theme);
+    position: relative;
+    font-weight: 800;
+    font-style: italic;
+    margin-inline: 14px;
+}
+
+.search-container,
+.search-container::before,
+.search-container::after {
+    transition: background-color .15s ease-out;
+}
+
+.search-container:hover {
+    --search-theme: var(--theme-hover);
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    rotate: 10deg;
+    height: calc(100% + 20px);
+    width: 32px;
+    background-color: var(--search-theme);
+}
+
+.search-container::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: -4px;
+    rotate: 10deg;
+    height: calc(100% + 20px);
+    width: 32px;
+    background-color: var(--search-theme);
+}
+
+.heroparam {
+    --animation-delay: .5s;
+    background-color: rgb(0 0 0 / .5);
+}
+
+.heroimage-container img {
+    aspect-ratio: 1;
+    object-fit: contain;
+    animation: fadeout .25s ease-out forwards;
+}
+
+.heroparam.correct {
+    animation: makeCorrect calc(var(--animation-delay) / 2) forwards;
+}
+
+.heroparam.incorrect {
+    animation: makeIncorrect calc(var(--animation-delay) / 2) forwards;
+}
+
+.heroparam:nth-child(1),
+.heroimage-container img:nth-child(1) {
+    animation-delay: calc(var(--animation-delay) * 5);
+}
+
+.heroparam:nth-child(3) {
+    animation-delay: var(--animation-delay);
+}
+
+.heroparam:nth-child(4) {
+    animation-delay: calc(var(--animation-delay) * 2);
+}
+
+.heroparam:nth-child(5) {
+    animation-delay: calc(var(--animation-delay) * 3);
+}
+
+.heroparam:nth-child(6) {
+    animation-delay: calc(var(--animation-delay) * 4);
+}
+
+
+.heroparam:nth-child(1) *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    animation-delay: calc(var(--animation-delay) * 5);
+}
+
+.heroparam:nth-child(3) *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    animation-delay: var(--animation-delay);
+}
+
+.heroparam:nth-child(4) *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    animation-delay: calc(var(--animation-delay) * 2);
+}
+
+.heroparam:nth-child(5) *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    animation-delay: calc(var(--animation-delay) * 3);
+}
+
+.heroparam:nth-child(6) *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    animation-delay: calc(var(--animation-delay) * 4);
+}
+
+
+.heroparam *:not(.donthi):not(.heroimage-container):not(.heroimage-container img) {
+    opacity: 0;
+    animation: fadeIn .1s ease-out forwards;
+}
+
+.heroes-container {
+    mask-image:
+        linear-gradient(to bottom, rgb(0 0 0 / 1) 95%, rgb(0 0 0 / .1)),
+        linear-gradient(to left, rgb(0 0 0) 20px, transparent 100%);
+}
+
+.heroes-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+.heroes-container::-webkit-scrollbar-thumb {
+    background-color: rgb(0 0 0 / .75);
+    border-radius: 6px;
+}
+
+@keyframes makeCorrect {
+    0% {
+        background-color: rgb(0 0 0 / .5);
+    } 100% {
+        background-color: rgb(0 255 50 / .5);
+    }
+}
+
+@keyframes makeIncorrect {
+    0% {
+        background-color: rgb(0 0 0 / .5);
+    } 100% {
+        background-color: rgb(255 20 20 / .5);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
